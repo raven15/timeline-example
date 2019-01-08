@@ -1,6 +1,15 @@
 TimeLine example
 ================
 
+## libs
+
+- [jQuery](https://jquery.com/) : v1.6.1
+- [jQuery Masonry](https://masonry.desandro.com) : v2.0.110901
+
+## ChangeLog
+
+- 2019-01-08 创建项目
+
 ## 创建过程
 
 ### step.1 创建项目
