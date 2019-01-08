@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>timeline example from w3cplus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul, ol {
+      list-style: none outside none;
+    }
+
+    #container {
+      width: 860px;
+      margin: 0 auto;
+    }
+
+    .item {
+      width: 408px;
+      margin: 20px 10px 10px;
+      float: left;
+      background-color: #fff;
+      border: 1px solid #b4bbcd;
+      min-height: 50px;
+      text-align: justify;
+      word-wrap: break-word;
+    }
+
+    .inner {
+      padding: 10px;
+    }
+
+
+    /*timeline navigatior css*/
+    .timeline_container {
+      width: 16px;
+      text-align: center;
+      margin: 0 auto;
+      cursor: pointer;
+      display: block;
+    }
+
+    .timeline {
+      margin: 0 auto;
+      background-color: #e08989;
+      display: block;
+      float: left;
+      height: 100%;
+      left: 428px;
+      margin-top: 10px;
+      position: absolute;
+      width: 4px;
+    }
+
+    .timeline:hover {
+      cursor: pointer;
+      margin: 0 auto;
+    }
+
+    .timeline div.plus {
+      width: 14px;
+      height: 14px;
+      position: relative;
+      left: -6px;
+    }
+
+
+    /*arrow css style*/
+    .rightCorner {
+      background-image: url("images/right.png");
+      display: block;
+      height: 15px;
+      margin-left: 408px;
+      margin-top: 8px;
+      padding: 0;
+      vertical-align: top;
+      width: 13px;
+      z-index: 2;
+      position: absolute;
+    }
+
+    .leftCorner {
+      background-image: url("images/left.png");
+      display: block;
+      height: 15px;
+      width: 13px;
+      margin-left: -13px;
+      margin-top: 8px;
+      position: absolute;
+      z-index: 2;
+    }
+
+    /*deletebox style */
+    .deletebox {
+      color: #CC0000;
+      float: right;
+      font-weight: bold;
+      margin: 8px 10px;
+      text-decoration: none;
+    }
+
+    /*popup*/
+    #popup {
+      display: block;
+      width: 408px;
+      float: left;
+      background-color: #fff;
+      border: 1px solid #a9b6d2;
+      min-height: 60px;
+      display: none;
+      position: absolute;
+      margin: 10px;
+    }
+
+    #update {
+      width: 100%;
+      resize: none;
+      min-height: 50px;
+    }
+
+    #update_button {
+      background-color: #CC0000;
+      border: 1px solid #333333;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 5px;
+      padding: 5px;
+    }
+
+  </style>
+</head>
+<body>
+<div id="container">
+  <!-- TimeLine导航 -->
+  <div class="timeline_container">
+    <div class="timeline">
+      <div class="plus"></div>
+    </div>
+  </div>
+  <div class="item">
+    <a href='#' class='deletebox'>X</a>
+    <div class="inner">
+      <h3>第一步先创建一个容器div</h3>
+      这里把称为“div#container”，同时这个容器是可以放置多个div元素，并且此处给其一个类名“item”，另外在每个“div.item”放置一个“div.inner”:
+    </div>
+  </div>
+  <div class="item">
+    <a href='#' class='deletebox'>X</a>
+    <div class="inner">
+      <h3>第二步：消除块与块之间的距离</h3>
+      前面一步，我们有一个很不理想的效果，就是块与块之间的距离太大了，那么这一步，我们就来看是如何让块与块之间的效果都是一致的。答案很简单，使用jquery和Masonry插件实现。这也就是前面为什么说需要准备jQuery的版本库和jQuery
+      Masonry plugin的原因(有关于jQuery Masonry plugin的详细介绍请点击这里)。下面别的不多说，请看如何调用：
+    </div>
+  </div>
+  <div class="item">
+    <a href='#' class='deletebox'>X</a>
+    <div class="inner">
+      <h3>第三步：制作timeline导航</h3>
+      上面完成了区块的效果设置，接下来这一步主要是制作Timeline导航的效果，在这里在“div#container”容器中添加一些需要使用的HTML标签用来制作“timeline”导航：
+    </div>
+  </div>
+  <div class="item">
+    <a href='#' class='deletebox'>X</a>
+    <div class="inner">
+      <h3>第四步：给item块加上箭头效果</h3>
+      这一步主要实现的效果是，给每个“div.item”的块加上箭头效果，如果“div.item”的在左边加上“向右箭头”，反之加上“向左箭头”。
+    </div>
+  </div>
+  <div id="popup" class="shade">
+    <div class="Popup_rightCorner"></div>
+    <div class="inner"><h3>What's Up?</h3>
+      <div class="clearfix"><textarea name="" id="update"></textarea></div>
+      <div class="clearfix"><input type="submit" id="update_button" value="Update"/></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="../libs/jquery/jquery-1.6.1.min.js"></script>
+<script type="text/javascript" src="../libs/masonry/jquery.masonry.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    // masonry plugin call
+    $('#container').masonry({itemSelector: '.item',});
+
+    //timeline_container add mousemove event
+    $(".timeline_container").mousemove(function (e) {
+      var topdiv = $("#containertop").height();
+      var page = e.pageY - topdiv - 26;
+      $(".plus").css({
+        "top": page + "px",
+        "background": "url('images/plus.png')",
+        "margin-left": "1px"
+      });
+    }).mouseout(function () {
+      $(".plus").css({
+        "background": "url('')"
+      });
+    });
+
+    //injecting arrow points
+    function Arrow_Points() {
+      var s = $("#container").find(".item");
+      $.each(s, function (i, obj) {
+        var posLeft = $(obj).css("left");
+        if (posLeft == "0px") {
+          html = "<span class='rightCorner'></span>";
+          $(obj).prepend(html);
+        } else {
+          html = "<span class='leftCorner'></span>";
+          $(obj).prepend(html);
+        }
+      });
+    }
+
+    Arrow_Points();
+
+    //delete item box
+    $(".deletebox").live("click", function () {
+      if (confirm("Are you sure?")) {
+        $(this).parent().fadeOut("slow");
+        //remove item block
+        $("#container").masonry("remove", $(this).parent());
+        //remove masonry plugin
+        $("#container").masonry("reload");
+        //Hiding existing arrows
+        $(".rightCorner").hide();
+        $(".leftCorner").hide();
+        //injecting fresh arrow
+        Arrow_Points();
+      }
+      return false;
+    });
+
+    //Timeline navigator on click action
+    $(".timeline_container").click(function (e) {
+      var topdiv = $("#containertop").height();
+      //Current Postion
+      $("#popup").css({
+        "top": (e.pageY - topdiv - 33) + "px"
+      });
+      $("#popup").fadeIn();//Popup block show
+      //textbox focus
+      $("#update").focus();
+    });
+
+    //Mouseover no action
+    $("#popup").mouseup(function () {
+      return false;
+    });
+
+    //outside action of the popup block
+    $(document).mouseup(function () {
+      $("#popup").hide();
+    });
+
+    //update button action
+    $("#update_button").live("click", function () {
+      //textbox value
+      var x = $("#update").val();
+      //ajax part
+      $("#container").prepend('<div class="item"><a href="#" class="deletebox">X</a>' + '<div class="inner">' + x + '</div></div>');
+      //reload masnory
+      $("#container").masonry("reload");
+      //Hiding existing arrows
+      $(".rightCorner").hide();
+      $(".leftCorner").hide();
+      //injecting fresh arrows
+      Arrow_Points();
+      //clear popup text box value
+      $("#update").val("");
+      //popup hide
+      $("#popup").hide();
+      return false;
+    });
+  });
+</script>
+
+</body>
+</html>
