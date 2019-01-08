@@ -28,3 +28,7 @@ cd timeline-example
 
 - 使用 WebStorm 打开项目文件夹，创建 `.gitignore` 与 `README.md` 文件
 
+## 参考文档
+
+- Srinivas Tamada. 9lessons. [Facebook Timeline Design using JQuery and CSS.](https://www.9lessons.info/2012/01/facebook-timeline-design-using-jquery.html) 2012-01-30. [2019-01-08].
+- 大漠. [jQuery制作Facebook Timeline](https://www.w3cplus.com/jquery/facebook-timeline-design-using-jquery). 2012-03-20. [2019-01-08].
