@@ -37,7 +37,7 @@ cd timeline-example
 
 - 使用 WebStorm 打开项目文件夹，创建 `.gitignore` 与 `README.md` 文件
 
-### step.1 下载引用的 js 库与资源
+### step.2 下载引用的 js 库与资源
 
 ``` bash
 cd libs/jquery
@@ -55,6 +55,8 @@ wget https://demos.9lessons.info/timeline/images/left.png
 wget https://demos.9lessons.info/timeline/images/left.png
 cd -
 ```
+
+### step.3 按照参考文档中的文章和示例创建并编写响应文件
 
 ## 参考文档
 
