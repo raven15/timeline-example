@@ -58,6 +58,22 @@ cd -
 
 ### step.3 按照参考文档中的文章和示例创建并编写响应文件
 
+
+## 其他一些 timeline demo
+
+* 精品
+
+    - https://s-mohan.github.io/demo/timeline/index.html
+    - https://github.com/NUKnightLab/TimelineJS3
+
+
+* 一般的
+
+    - https://ilkeryilmaz.github.io/timelinejs/
+    - http://www.jq22.com/demo/jqueryCntl201708270128/
+    - http://www.jq22.com/demo/timeliner201705221159/
+    - http://www.jq22.com/demo/cssLct201712121032/
+
 ## 参考文档
 
 - [Srinivas Tamada](http://www.9lessons.info/). [9lessons.info](https://www.9lessons.info/). [Facebook Timeline Design using JQuery and CSS.](https://www.9lessons.info/2012/01/facebook-timeline-design-using-jquery.html) 2012-01-30. [2019-01-08].
